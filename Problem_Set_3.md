@@ -222,8 +222,7 @@ min( by(diamonds$price, diamonds$cut, min) )
 ```
 
 ```r
-# display the median price per cut
-by(diamonds$price, diamonds$cut, median)
+# display the median price per cut by(diamonds$price, diamonds$cut, median)
 ```
 
 ```
@@ -313,7 +312,7 @@ qplot(data = diamonds, x = color, y = price,
 
 
 ```r
-# returns the summary per color
+# returns the summary per color 
 by(diamonds$price, diamonds$color, summary)
 ```
 
@@ -404,7 +403,8 @@ dplyr - a package that helps you transform tidy, tabular data
 
 ***
 
-## Gapminder Data : Energy use in the world, per person
+2. Gapminder Dataset : Energy use in the world, per person
+===========================================================================
 
 #Loading data
 
@@ -563,7 +563,8 @@ ggplot(data = canada_df,
 
 ***
 
-## Exploring Your Friends' Birthdays
+3. Birthday Dataset : Exploring Your Friends' Birthdays
+===========================================================================
 
 #Loading data
 
