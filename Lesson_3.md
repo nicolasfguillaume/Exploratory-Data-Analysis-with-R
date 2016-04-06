@@ -1,44 +1,10 @@
 Lesson 3
 ========================================================
 
-***
-
-### What to Do First?
-Notes:
-
-
-```r
-getwd()
-```
-
-```
-## [1] "C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/Lesson 3"
-```
-
-```r
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
-list.files()
-```
-
-```
-##  [1] "Archive"                    "BigDiamonds.Rda"           
-##  [3] "birthdaysExample.csv"       "Electricity Generation.csv"
-##  [5] "Final Project"              "Learning Resources"        
-##  [7] "Lesson 3"                   "Lesson1.R"                 
-##  [9] "Lesson2.R"                  "lesson4.rmd"               
-## [11] "lesson5.rmd"                "lesson6.rmd"               
-## [13] "nci.tsv"                    "priceHistogram.png"        
-## [15] "Problem Set 4.rmd"          "Problem Set 5.rmd"         
-## [17] "pseudo_facebook.tsv"        "reddit.csv"                
-## [19] "stateData.csv"              "What_is_a_RMD_file.Rmd"    
-## [21] "yogurt.csv"
-```
-
 
 ***
 
 ### Pseudo-Facebook User Data
-Notes:
 
 
 ```r
@@ -60,57 +26,20 @@ names(pf)
 ***
 
 ### Histogram of Users' Birthdays
-Notes:
 
 
 ```r
-#install.packages('ggplot2')
 library(ggplot2)
 qplot(x= dob_day, data = pf) +
   scale_x_continuous(breaks=1:31)
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
 
 ![](Lesson_3_files/figure-html/Histogram of Users' Birthdays-1.png)
 
 ***
 
-#### What are some things that you notice about this histogram?
-Response:
-
-***
-
-### Moira's Investigation
-Notes:
-
-***
-
-### Estimating Your Audience Size
-Notes:
-
-***
-
-#### Think about a time when you posted a specific message or shared a photo on Facebook. What was it?
-Response:
-
-#### How many of your friends do you think saw that post?
-Response:
-
-#### Think about what percent of your friends on Facebook see any posts or comments that you make in a month. What percent do you think that is?
-Response:
-
-***
-
-### Perceived Audience Size
-Notes:
-
-***
 ### Faceting
-Notes:
-
 
 ```r
 qplot(x= dob_day, data = pf) +
@@ -118,53 +47,19 @@ qplot(x= dob_day, data = pf) +
   facet_wrap(~dob_month, ncol=3)
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](Lesson_3_files/figure-html/Faceting-1.png)
 
-#### Letâs take another look at our plot. What stands out to you here?
-Response:
-
-***
-
-### Be Skeptical - Outliers and Anomalies
-Notes:
-
-***
-
-### Moira's Outlier
-Notes:
-#### Which case do you think applies to Moiraâs outlier?
-Response:
-
-***
-
-### Friend Count
-Notes:
 
 #### What code would you enter to create a histogram of friend counts?
-
 
 ```r
 qplot(x = friend_count, data = pf)
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](Lesson_3_files/figure-html/Friend Count-1.png)
 
-#### How is this plot similar to Moira's first plot?
-Response:
-
-***
 
 ### Limiting the Axes
-Notes:
-
 
 ```r
 #qplot(x = friend_count, data = pf, xlim = c(0, 1000) )
@@ -173,45 +68,18 @@ qplot(x = friend_count, data = pf) +
   scale_x_continuous( limits = c(0,1000))
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 2951 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
-```
-
 ![](Lesson_3_files/figure-html/Limiting the Axes-1.png)
 
-### Exploring with Bin Width
-Notes:
-
-***
-
-### Adjusting the Bin Width
-Notes:
 
 ### Faceting Friend Count
 
 ```r
 # What code would you add to create a facet the histogram by gender?
-# Add it to the code below.
+
 qplot(x = friend_count, data = pf, binwidth = 25) +
   scale_x_continuous(limits = c(0, 1000),
                      breaks = seq(0, 1000, 50)) +    # update the x-axis label
   facet_wrap(~gender)   
-```
-
-```
-## Warning: Removed 2951 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 6 rows containing missing values (geom_bar).
 ```
 
 ![](Lesson_3_files/figure-html/Faceting Friend Count-1.png)
@@ -219,8 +87,6 @@ qplot(x = friend_count, data = pf, binwidth = 25) +
 ***
 
 ### Omitting NA Values
-Notes:
-
 
 ```r
 #qplot(x = friend_count, data = na.omit(pf), binwidth = 25) +
@@ -236,21 +102,11 @@ qplot(x = friend_count, data = subset(pf, !is.na(gender)), binwidth = 25) +
   facet_wrap(~gender)
 ```
 
-```
-## Warning: Removed 2949 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 4 rows containing missing values (geom_bar).
-```
-
 ![](Lesson_3_files/figure-html/Omitting NA Values-1.png)
 
 ***
 
 ### Statistics 'by' Gender
-Notes:
-
 
 ```r
 table(pf$gender)   # returns the number of female and male
@@ -276,31 +132,15 @@ by(pf$friend_count, pf$gender, summary)
 ##       0      27      74     165     182    4917
 ```
 
-#### Who on average has more friends: men or women?
-Response:
-
-#### What's the difference between the median friend count for women and men?
-Response:
-
 #### Why would the median be a better measure than the mean?
-Response:more robust statistics
+Response: more robust statistics
 
 ***
 
 ### Tenure
-Notes:
-
 
 ```r
 qplot(x = tenure, data = pf, color = I('black'), fill= I('#099DD9') )
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 ![](Lesson_3_files/figure-html/Tenure-1.png)
@@ -309,21 +149,12 @@ qplot(x = tenure, data = pf, color = I('black'), fill= I('#099DD9') )
 
 #### How would you create a histogram of tenure by year?
 
-
 ```r
 qplot(x = tenure/365, data = pf, 
       color = I('black'), fill= I('#099DD9') , 
       binwidth = 0.25 ) +
   scale_x_continuous(limits = c(0, 7),
                      breaks = seq(0, 7, 1))
-```
-
-```
-## Warning: Removed 26 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
 ```
 
 ![](Lesson_3_files/figure-html/Tenure Histogram by Year-1.png)
