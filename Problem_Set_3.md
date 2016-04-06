@@ -65,18 +65,6 @@ summary(diamonds)
 ```
 
 ```r
-?diamonds       # help on the dataset
-```
-
-```
-## starting httpd help server ...
-```
-
-```
-##  done
-```
-
-```r
 str(diamonds)   # structure of an object
 ```
 
@@ -97,16 +85,10 @@ str(diamonds)   # structure of an object
 
 ***
 
-## Create a histogram of the price of
-## all the diamonds in the diamond data set.
-
+## Create a histogram of the price of all the diamonds in the diamond data set.
 
 ```r
 qplot(data = diamonds, price)
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-2-1.png)
@@ -158,14 +140,6 @@ dim( subset(diamonds, price >= 15000) )
 qplot(data = diamonds, price, binwidth = 20) +
   scale_x_continuous(limits = c(300, 1500),
                      breaks = seq(300, 1500, 100))
-```
-
-```
-## Warning: Removed 33930 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
 ```
 
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-4-1.png)
