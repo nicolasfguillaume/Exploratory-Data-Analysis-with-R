@@ -366,8 +366,7 @@ IQR(subset(diamonds, color == 'J')$price)
 
 ***
 
-## Investigate the price per carat of diamonds across
-## the different colors of diamonds using boxplots.
+## Investigate the price per carat of diamonds across the different colors of diamonds using boxplots.
 
 Note: color doesnt affect very much the price/carat
 
