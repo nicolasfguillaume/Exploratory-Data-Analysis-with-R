@@ -148,16 +148,6 @@ qplot(data = diamonds, price, binwidth = 20) +
 ggsave('priceHistogram.png')
 ```
 
-```
-## Saving 7 x 5 in image
-```
-
-```
-## Warning: Removed 33930 rows containing non-finite values (stat_bin).
-
-## Warning: Removed 2 rows containing missing values (geom_bar).
-```
-
 ***
 
 ## Explore the histogram of the price, by cut
@@ -170,19 +160,10 @@ qplot(data = diamonds, price, binwidth = 20) +
   facet_wrap(~cut, ncol = 1)   
 ```
 
-```
-## Warning: Removed 1655 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 10 rows containing missing values (geom_bar).
-```
-
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-5-1.png)
 
 ```r
-# display the max price per cut
-by(diamonds$price, diamonds$cut, max) 
+# display the max price per cut by(diamonds$price, diamonds$cut, max) 
 ```
 
 ```
@@ -283,14 +264,6 @@ qplot(data = diamonds, price, binwidth = 20) +
   facet_wrap(~cut, ncol = 1, scales = 'free_y')   
 ```
 
-```
-## Warning: Removed 1655 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 10 rows containing missing values (geom_bar).
-```
-
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-6-1.png)
 
 
@@ -309,9 +282,7 @@ qplot(data = diamonds, x = price/carat, binwidth = 0.05) +
 
 ***
 
-## Investigate the price of diamonds using box plots,
-## numerical summaries, and one of the following categorical
-## variables: cut, clarity, or color.
+## Investigate the price of diamonds using box plots, numerical summaries, and one of the following categorical variables: cut, clarity, or color.
 
 
 ```r
@@ -419,14 +390,6 @@ qplot(data = diamonds, x = carat, binwidth = 0.007,
       geom = 'freqpoly') +
   scale_x_continuous(limits = c(0, 1.5),
                      breaks = seq(0, 1.5, 0.1)) 
-```
-
-```
-## Warning: Removed 5442 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 3 rows containing missing values (geom_path).
 ```
 
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-11-1.png)
@@ -557,10 +520,6 @@ qplot(data = electricity_df, x = X1990/10^9,
       main="Distribution of electricty generation in the world in 1990")
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-13-1.png)
 
 ```r
@@ -570,10 +529,6 @@ qplot(data = electricity_df, x = X1990/10^9,
       ylab = 'Number of country in sample',
       main="Distribution of electricty generation in the world in 1990 (log scale)") +
   scale_x_log10()
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ![](Problem_Set_3_files/figure-html/unnamed-chunk-13-2.png)
@@ -587,33 +542,13 @@ qplot(data = electricity_df, x = X1990/10^9,
 library(dplyr)
 ```
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
 
 ```r
 library(tidyr)
-library(ggplot2)
 
 canada_df <- electricity_df[ electricity_df$country == 'Canada' ,] 
-
 canada_df <- canada_df[, -1]  #remove first column (to avoid the df to be factors and not numeric)
-
 canada_df <- as.data.frame( t(canada_df) )
-
 canada_df <- canada_df / 10^9
 
 ggplot(data = canada_df,
