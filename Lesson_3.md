@@ -162,8 +162,6 @@ qplot(x = tenure/365, data = pf,
 ***
 
 ### Labeling Plots
-Notes:
-
 
 ```r
 qplot(x = tenure/365, data = pf, 
@@ -175,21 +173,12 @@ qplot(x = tenure/365, data = pf,
                      breaks = seq(0, 7, 1))
 ```
 
-```
-## Warning: Removed 26 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
-```
 
 ![](Lesson_3_files/figure-html/Labeling Plots-1.png)
 
 ***
 
 ### User Ages
-Notes:
-
 
 ```r
 qplot(x = age, data = pf, 
@@ -201,30 +190,10 @@ qplot(x = age, data = pf,
                      breaks = seq(10, 115, 10)) 
 ```
 
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
-```
-
 ![](Lesson_3_files/figure-html/User Ages-1.png)
 
-#### What do you notice?
-Response:
-
-***
-
-### The Spread of Memes
-Notes:
-
-***
-
-### Lada's Money Bag Meme
-Notes:
-
-***
 
 ### Transforming Data
-Notes:
-
 
 ```r
 summary( pf$friend_count   )
@@ -257,11 +226,8 @@ summary( sqrt( pf$friend_count + 1)   )
 ***
 
 ### Add a Scaling Layer
-Notes:
-
 
 ```r
-#install.packages('gridExtra') 
 library(gridExtra) 
 
 # define individual plots
@@ -272,19 +238,6 @@ p3 <- qplot(x = friend_count, data = pf) +          # sqrt(friend_count)
   scale_x_sqrt()
 # arrange plots in grid
 grid.arrange(p1, p2, p3, ncol=1)
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 1962 rows containing non-finite values (stat_bin).
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ![](Lesson_3_files/figure-html/Add a Scaling Layer-1.png)
@@ -315,20 +268,11 @@ qplot(x = friend_count, y = ..count../sum(..count..),
                      breaks = seq(0, 1000, 50)) 
 ```
 
-```
-## Warning: Removed 2949 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 4 rows containing missing values (geom_path).
-```
-
 ![](Lesson_3_files/figure-html/Frequency Polygons-1.png)
 
 ***
 
 ### Likes on the Web
-Notes:
 
 
 ```r
@@ -344,14 +288,6 @@ qplot(x = www_likes, y = ..count../sum(..count..),
   scale_x_log10()
 ```
 
-```
-## Scale for 'x' is already present. Adding another scale for 'x', which
-## will replace the existing scale.
-```
-
-```
-## Warning: Removed 60935 rows containing non-finite values (stat_bin).
-```
 
 ![](Lesson_3_files/figure-html/Likes on the Web-1.png)
 
@@ -372,8 +308,6 @@ by(pf$www_likes, pf$gender, sum)
 ***
 
 ### Box Plots
-Notes:
-
 
 ```r
 qplot(x =gender, y = friend_count, 
@@ -385,15 +319,10 @@ qplot(x =gender, y = friend_count,
 
 #### Adjust the code to focus on users who have friend counts between 0 and 1000.
 
-
 ```r
 qplot(x =gender, y = friend_count, 
       data = subset(pf, !is.na(gender)), 
       geom = 'boxplot', ylim = c(0,1000))
-```
-
-```
-## Warning: Removed 2949 rows containing non-finite values (stat_boxplot).
 ```
 
 ![](Lesson_3_files/figure-html/unnamed-chunk-3-1.png)
@@ -404,10 +333,6 @@ qplot(x =gender, y = friend_count,
       data = subset(pf, !is.na(gender)), 
       geom = 'boxplot') +
   scale_y_continuous(limits = c(0,1000))
-```
-
-```
-## Warning: Removed 2949 rows containing non-finite values (stat_boxplot).
 ```
 
 ![](Lesson_3_files/figure-html/unnamed-chunk-3-2.png)
@@ -439,8 +364,6 @@ by(pf$friend_count, pf$gender, summary)
 ***
 
 ### Box Plots, Quartiles, and Friendships
-Notes:
-
 
 ```r
 qplot(x =gender, y = friend_count, 
@@ -450,11 +373,6 @@ qplot(x =gender, y = friend_count,
 ```
 
 ![](Lesson_3_files/figure-html/Box Plots, Quartiles, and Friendships-1.png)
-
-#### On average, who initiated more friendships in our sample: men or women?
-Response:
-#### Write about some ways that you can verify your answer.
-Response:
 
 ```r
 qplot(x =gender, y = friendships_initiated, 
@@ -479,13 +397,9 @@ by(pf$friendships_initiated, pf$gender, summary)
 ##     0.0    15.0    44.0   103.1   111.0  4144.0
 ```
 
-Response:
-
 ***
 
 ### Getting Logical
-Notes:
-
 
 ```r
 summary(pf$mobile_likes)
@@ -502,17 +416,6 @@ qplot(data = pf, x = mobile_likes)+
                      breaks = seq(0, 10, 1))
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 40402 rows containing non-finite values (stat_bin).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
-```
 
 ![](Lesson_3_files/figure-html/Getting Logical-1.png)
 
@@ -538,7 +441,6 @@ summary(pf$mobile_check_in)
 ```
 
 ```r
-# percent of check in using mobile: 65%
 sum(pf$mobile_check_in == 1) / length(pf$mobile_check_in)
 ```
 
@@ -546,18 +448,15 @@ sum(pf$mobile_check_in == 1) / length(pf$mobile_check_in)
 ## [1] 0.6459097
 ```
 
-Response:
+Response: percent of check-in using mobile = 65%
 
 ***
 
 ### Analyzing One Variable
 Reflection:
-look at the data distribution to find insightful information
-look for outliers and missing values
-plotting the data helps a lot, conveys more information
-use data transformation can be very helpful too
+- look at the data distribution to find insightful information
+- look for outliers and missing values
+- plotting the data helps a lot, conveys more information
+- use data transformation can be very helpful too
 
 ***
-
-Click **KnitHTML** to see all of your hard work and to have an html
-page of this lesson, your answers, and your notes!
