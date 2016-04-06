@@ -2,7 +2,7 @@
 Nicolas  
 February 17, 2016  
 
-Problem Set 3 : Diamonds
+1. Diamonds Dataset
 ========================================================
 
 ***
