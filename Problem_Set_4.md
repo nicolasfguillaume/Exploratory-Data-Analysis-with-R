@@ -378,7 +378,7 @@ ggplot(aes(x = row.names(electricity_df), y = Total/10^9,  group = 1), #  all po
 
 ![](Problem_Set_4_files/figure-html/unnamed-chunk-15-1.png)
 
-# Electricty generation in the world in X in 1990 compared to the average and median
+# Electricty generation in the world in 1990-1995 compared to the average generation foa all countries
 
 ```r
 library(reshape2)
