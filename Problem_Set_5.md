@@ -5,8 +5,6 @@ March 26, 2016
 1. Diamonds dataset (continued)
 ========================================================
 
-***
-
 ### Loading the dataset
 
 
