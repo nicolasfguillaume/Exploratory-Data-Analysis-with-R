@@ -1,4 +1,4 @@
-# Problem Data Set 4
+# Problem Data Set 4: Explore Two Variables
 Nicolas  
 March 15, 2016  
 
