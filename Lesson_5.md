@@ -369,13 +369,11 @@ ggplot(aes(x = tenure, y = friendships_initiated / tenure),
 
 ***
 
-### Introducing the Yogurt Data Set
-Notes:
+## Introducing the Yogurt Data Set
 
 ***
 
 ### Histograms Revisited
-Notes:
 
 ```r
 yo <- read.csv('yogurt.csv')
@@ -499,6 +497,8 @@ ggpairs(pf_subset[sample.int(nrow(pf_subset), 1000), ])
 ![](Lesson_5_files/figure-html/unnamed-chunk-6-1.png)
 
 ***
+
+## Even more variables!
 
 ### Heat Maps
 Notes:
