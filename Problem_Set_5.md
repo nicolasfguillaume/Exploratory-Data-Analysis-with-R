@@ -1,8 +1,8 @@
-# Problem Set 5
+# Problem Set 5: Explore Many Variables
 Nicolas  
 March 26, 2016  
 
-Problem Set 5 : Diamonds (continued)
+1. Diamonds dataset (continued)
 ========================================================
 
 ***
