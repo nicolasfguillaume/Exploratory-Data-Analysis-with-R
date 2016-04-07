@@ -4,7 +4,6 @@ Lesson 4
 ***
 
 ### Scatterplots and Perceived Audience Size
-Notes:
 
 ***
 
@@ -12,17 +11,7 @@ Notes:
 
 Load data:
 
-
 ```r
-getwd()
-```
-
-```
-## [1] "C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/Lesson 4"
-```
-
-```r
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
 pf <- read.csv('pseudo_facebook.tsv', sep='\t')
 names(pf)
 ```
@@ -38,23 +27,12 @@ names(pf)
 ## [15] "www_likes_received"
 ```
 
-
-Notes:
-
-
 ```r
 library(ggplot2)
 qplot(x= age, y = friend_count ,data = pf)
 ```
 
 ![](lesson4_files/figure-html/Scatterplots-1.png)
-
-***
-
-#### What are some things that you notice right away?
-Response:
-
-***
 
 ### ggplot Syntax
 Notes:
