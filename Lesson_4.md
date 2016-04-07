@@ -52,8 +52,6 @@ ggplot(aes(x= age, y = friend_count) , data = pf) +
 ***
 
 ### Overplotting
-Notes:
-
 
 ```r
 ggplot(aes(x= age, y = friend_count) , data = pf) + 
@@ -61,30 +59,18 @@ ggplot(aes(x= age, y = friend_count) , data = pf) +
   xlim(13,90)                # between age 13 to 90, to remove some anomalies
 ```
 
-```
-## Warning: Removed 5182 rows containing missing values (geom_point).
-```
 
 ![](lesson4_files/figure-html/Overplotting-1.png)
-
-#### What do you notice in the plot?
-Response:
 
 ***
 
 ### Coord_trans()
-Notes:
-
 
 ```r
 ggplot(aes(x= age, y = friend_count) , data = pf) + 
   geom_point(alpha=1/20) +   # add some noise to have a more intuitive representation
   xlim(13,90) +               # between age 13 to 90, to remove some anomalies
   coord_trans(y = 'sqrt')
-```
-
-```
-## Warning: Removed 4906 rows containing missing values (geom_point).
 ```
 
 ![](lesson4_files/figure-html/Coord_trans()-1.png)
@@ -99,19 +85,9 @@ ggplot(aes(x= age, y = friend_count) , data = pf) +
   coord_trans(y = 'sqrt')
 ```
 
-```
-## Warning: Removed 4906 rows containing missing values (geom_point).
-```
-
 ![](lesson4_files/figure-html/unnamed-chunk-2-1.png)
 
-#### What do you notice?
-
-***
-
 ### Alpha and Jitter
-Notes:
-
 
 ```r
 ggplot(aes(x= age, y = friend_count) , data = pf) + 
@@ -120,17 +96,11 @@ ggplot(aes(x= age, y = friend_count) , data = pf) +
   coord_trans(y = 'sqrt')
 ```
 
-```
-## Warning: Removed 5200 rows containing missing values (geom_point).
-```
-
 ![](lesson4_files/figure-html/Alpha and Jitter 1-1.png)
 
 ***
 
 ### Relationship between friends initiated  vs age
-Notes:
-
 
 ```r
 ggplot(aes(x= age, y = friendships_initiated) , data = pf) + 
@@ -139,44 +109,14 @@ ggplot(aes(x= age, y = friendships_initiated) , data = pf) +
   coord_trans(y = 'sqrt')
 ```
 
-```
-## Warning: Removed 5183 rows containing missing values (geom_point).
-```
-
 ![](lesson4_files/figure-html/Alpha and Jitter 2-1.png)
-
-
-***
-
-### Overplotting and Domain Knowledge
-Notes:
 
 ***
 
 ### Conditional Means
-Notes:
-
 
 ```r
-#install.packages('dplyr')
 library(dplyr)                  # allows to split up a dataframe and apply functions
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
 ```
 
 ```r
@@ -218,11 +158,8 @@ pf.fc_by_age
 ```
 
 ### Conditional Means
-Notes:
-
 
 ```r
-#install.packages('dplyr')
 library(dplyr)                  # allows to split up a dataframe and apply functions
 
 # alternatively, it is possible to chain the commands:
@@ -258,7 +195,6 @@ pf.fc_by_age
 
 Create your plot!
 
-
 ```r
 ggplot(aes(x= age, y = friend_count_mean) , data = pf.fc_by_age) + 
   geom_line()              # creates a line graph
@@ -269,8 +205,6 @@ ggplot(aes(x= age, y = friend_count_mean) , data = pf.fc_by_age) +
 ***
 
 ### Overlaying Summaries with Raw Data
-Notes:
-
 
 ```r
 ggplot(aes(x= age, y = friend_count) , data = pf) + 
@@ -290,21 +224,9 @@ ggplot(aes(x= age, y = friend_count) , data = pf) +
 
 ![](lesson4_files/figure-html/Overlaying Summaries with Raw Data-1.png)
 
-#### What are some of your observations of the plot?
-Response:
-
-***
-
-### Moira: Histogram Summary and Scatterplot
-See the Instructor Notes of this video to download Moira's paper on perceived audience size and to see the final plot.
-
-Notes:
-
 ***
 
 ### Correlation
-Notes:
-
 
 ```r
 cor(pf$age, pf$friend_count)
@@ -336,13 +258,11 @@ cor.test(pf$age, pf$friend_count, method="pearson")
 Look up the documentation for the cor.test function.
 
 What's the correlation between age and friend count? Round to three decimal places.
-Response:
+Response: -0.027
 
 ***
 
 ### Correlation on Subsets
-Notes:
-
 
 ```r
 with( pf[ pf$age <= 70 ,]  , cor.test(age, friend_count, method="pearson"))
@@ -364,14 +284,8 @@ with( pf[ pf$age <= 70 ,]  , cor.test(age, friend_count, method="pearson"))
 
 ***
 
-### Correlation Methods
-Notes:
-
-***
-
 ## Create Scatterplots
 Notes: scatterplot of likes_received (y) vs. www_likes_received (x)
-
 
 ```r
 ggplot(aes(x= www_likes_received, y = likes_received) , data = pf) + 
@@ -380,17 +294,11 @@ ggplot(aes(x= www_likes_received, y = likes_received) , data = pf) +
   ylim(0, quantile(pf$likes_received, probs = 0.95))       # 95% percentile on y variable
 ```
 
-```
-## Warning: Removed 6075 rows containing missing values (geom_point).
-```
-
 ![](lesson4_files/figure-html/unnamed-chunk-3-1.png)
 
 ***
 
 ### Strong Correlations
-Notes:
-
 
 ```r
 ggplot(aes(x= www_likes_received, y = likes_received) , data = pf) + 
@@ -398,14 +306,6 @@ ggplot(aes(x= www_likes_received, y = likes_received) , data = pf) +
   xlim(0, quantile(pf$www_likes_received, probs = 0.95)) +   # 95% percentile on x variable
   ylim(0, quantile(pf$likes_received, probs = 0.95)) +       # 95% percentile on y variable
   geom_smooth(method = 'lm', color = 'red')      # adding linear regression
-```
-
-```
-## Warning: Removed 6075 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 6075 rows containing missing values (geom_point).
 ```
 
 ![](lesson4_files/figure-html/Strong Correlations-1.png)
@@ -432,36 +332,18 @@ cor.test(pf$www_likes_received,pf$likes_received)  # provides a report
 ## 0.9479902
 ```
 
-Response:
-
-***
-
-### Moira on Correlation
-Notes:
+Response: Correlation is 0.94
 
 ***
 
 ### More Caution with Correlation
-Notes:
-
 
 ```r
 #install.packages('car',dependencies=TRUE)
 #install.packages('alr3',dependencies=TRUE)
 #install.packages('nlme')
 library(car)
-```
-
-```
-## Warning: package 'car' was built under R version 3.2.4
-```
-
-```r
 library(alr3)
-```
-
-```
-## Warning: package 'alr3' was built under R version 3.2.4
 ```
 
 ```r
@@ -469,16 +351,7 @@ data(Mitchell)
 ?Mitchell
 ```
 
-```
-## starting httpd help server ...
-```
-
-```
-##  done
-```
-
 Create your plot!
-
 
 ```r
 library(ggplot2)
@@ -533,19 +406,7 @@ ggplot(aes(x= Mitchell$Month, y= Mitchell$Temp) , data = Mitchell) +
 
 ***
 
-### A New Perspective
-
-What do you notice?
-Response:
-
-Watch the solution video and check out the Instructor Notes!
-Notes:
-
-***
-
 ### Understanding Noise: Age to Age Months
-Notes:
-
 
 ```r
 pf <- read.csv('pseudo_facebook.tsv', sep='\t')
@@ -654,7 +515,6 @@ pf.fc_by_age_months
 
 ### Noise in Conditional Means
 
-
 ```r
 ggplot(aes(x= age_with_months, y = friend_count_mean) , data = pf.fc_by_age_months) + 
   geom_line()  +
@@ -666,8 +526,6 @@ ggplot(aes(x= age_with_months, y = friend_count_mean) , data = pf.fc_by_age_mont
 ***
 
 ### Comparing Conditional Means
-Notes:
-
 
 ```r
 p1 <- ggplot(aes(x= age, y = friend_count_mean) , 
@@ -691,8 +549,6 @@ grid.arrange(p2,p1,p3,ncol=1)
 ***
 
 ### Smoothing Conditional Means
-Notes:
-
 
 ```r
 p1 <- ggplot(aes(x= age, y = friend_count_mean) , 
@@ -714,20 +570,3 @@ grid.arrange(p2,p1,p3,ncol=1)
 ```
 
 ![](lesson4_files/figure-html/Smoothing Conditional Means 2-1.png)
-
-
-***
-
-### Which Plot to Choose?
-Notes:
-
-***
-
-### Analyzing Two Variables
-Reflection:
-
-***
-
-Click **KnitHTML** to see all of your hard work and to have an html
-page of this lesson, your answers, and your notes!
-
