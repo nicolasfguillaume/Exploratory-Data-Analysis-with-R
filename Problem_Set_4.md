@@ -80,6 +80,8 @@ cor.test(diamonds$price,diamonds$x)  # length in mm
 ## 0.8844352
 ```
 
+Correlation is 0.88
+
 ```r
 cor.test(diamonds$price,diamonds$y)  # width in mm
 ```
@@ -98,6 +100,8 @@ cor.test(diamonds$price,diamonds$y)  # width in mm
 ## 0.8654209
 ```
 
+Correlation is 0.86
+
 ```r
 cor.test(diamonds$price,diamonds$z)  # depth in mm
 ```
@@ -115,6 +119,7 @@ cor.test(diamonds$price,diamonds$z)  # depth in mm
 ##       cor 
 ## 0.8612494
 ```
+Correlation is 0.86
 
 ***
 
