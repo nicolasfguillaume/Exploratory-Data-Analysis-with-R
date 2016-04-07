@@ -3,7 +3,7 @@ Nicolas
 March 15, 2016  
 
 
-Problem Set 4 : Diamonds (continued)
+1. Diamonds Dataset (continued)
 ========================================================
 
 ***
@@ -13,43 +13,6 @@ Problem Set 4 : Diamonds (continued)
 
 ```r
 library(ggplot2)
-getwd()
-```
-
-```
-## [1] "C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/Lesson 4"
-```
-
-```r
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
-list.files()
-```
-
-```
-##  [1] "Archive"                            
-##  [2] "BigDiamonds.Rda"                    
-##  [3] "birthdaysExample.csv"               
-##  [4] "Electricity Generation.csv"         
-##  [5] "Final Project"                      
-##  [6] "Learning Resources"                 
-##  [7] "Lesson 3"                           
-##  [8] "Lesson 4"                           
-##  [9] "Lesson1.R"                          
-## [10] "Lesson2.R"                          
-## [11] "lesson5.rmd"                        
-## [12] "lesson6.rmd"                        
-## [13] "nci.tsv"                            
-## [14] "priceHistogram.png"                 
-## [15] "Problem Set 5.rmd"                  
-## [16] "pseudo_facebook.tsv"                
-## [17] "reddit.csv"                         
-## [18] "stateData.csv"                      
-## [19] "Test drive R Markdown on Github.url"
-## [20] "What_is_a_RMD_file.Rmd"             
-## [21] "yogurt.csv"
-```
-
-```r
 data(diamonds)
 summary(diamonds)
 ```
@@ -84,7 +47,6 @@ summary(diamonds)
 ***
 
 ### Create a scatterplot of price vs x
-
 
 ```r
 ggplot(aes(x = x, y = price), data = diamonds) +
@@ -158,10 +120,7 @@ cor.test(diamonds$price,diamonds$z)  # depth in mm
 
 ### Create a scatterplot of price vs depth
 
-Change the code to make the transparency of the
-points to be 1/100 of what they are now and mark
-the x-axis every 2 units.
-
+Make the transparency of the points to be 1/100 of what they are now and mark the x-axis every 2 units.
 
 ```r
 ggplot(aes(x = depth, y = price), data = diamonds) +
@@ -172,16 +131,11 @@ ggplot(aes(x = depth, y = price), data = diamonds) +
                      breaks = seq(50,75, 2))    # mark the x-axis every 2 units
 ```
 
-```
-## Warning: Removed 6 rows containing missing values (geom_point).
-```
-
 ![](Problem_Set_4_files/figure-html/unnamed-chunk-4-1.png)
 
 ***
 
 ### Correlation between price and depth
-
 
 ```r
 cor.test(diamonds$price,diamonds$depth)  # depth: total depth percentage = z / mean(x, y) = 2 * z / (x + y) (43-79)
@@ -203,10 +157,7 @@ cor.test(diamonds$price,diamonds$depth)  # depth: total depth percentage = z / m
 
 ***
 
-### Create a scatterplot of price vs carat
-
-and omit the top 1% of price and carat values.
-
+### Create a scatterplot of price vs carat and omit the top 1% of price and carat values.
 
 ```r
 ggplot(aes(x = carat, y = price), data = diamonds) +
@@ -217,17 +168,11 @@ ggplot(aes(x = carat, y = price), data = diamonds) +
   ylim(0, quantile(diamonds$price, probs = 0.99))       # 99% percentile on y variable
 ```
 
-```
-## Warning: Removed 926 rows containing missing values (geom_point).
-```
-
 ![](Problem_Set_4_files/figure-html/unnamed-chunk-6-1.png)
 
 ***
 
 ### Create a scatterplot of price vs volume (x*y*z)
-
-
 
 ```r
 diamonds$volume <- diamonds$x * diamonds$y * diamonds$z
@@ -284,8 +229,6 @@ cor.test(temp_df$price,temp_df$volume)
 
 ### Create a scatterplot of price vs volume (x*y*z)
 
-
-
 ```r
 temp_df <- diamonds[ diamonds$volume > 0 & diamonds$volume <= 800 , ]
 
@@ -304,29 +247,9 @@ The linear model is not a good fit.
 
 ### Create a new data frame containing info on diamonds by clarity
 
-
 ```r
 library(dplyr)
-```
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 clarity_groups  <- group_by(diamonds,clarity)     # first groups data by clarity
 
 diamondsByClarity <- summarise(clarity_groups,                 # then summarizes
@@ -355,13 +278,9 @@ diamondsByClarity
 ## 8      IF   2864.839         1080       369     18806  1790
 ```
 
-Note : Note: If you used the count() function from the plyr package before this exercise. You need to run this command to unload the plyr package. 
-detach("package:plyr", unload=TRUE) 
-
 ***
 
 ### Create two bar plots : mean_price vs. clarity, mean_price vs. color
-
 
 ```r
 library(dplyr)
@@ -385,18 +304,14 @@ grid.arrange(p1,p2,ncol=1)
 
 ***
 
-###  Gapminder Revisited : Energy use in the world, per person
+2. Gapminder Revisited : Energy use in the world, per person
+========================================================
 
-Your task is to continue the investigation you did at the end of Problem Set 3.
-In your investigation, examine pairs of variable and create 2-5 plots that make
-use of the techniques from Lesson 4.
+Your task is to continue the investigation you did at the end of Problem Set 3. In your investigation, examine pairs of variable and create 2-5 plots that make use of the techniques from Lesson 4.
 
 # Loading data
 
-
 ```r
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
-
 electricity_df <- read.csv('Electricity Generation.csv', stringsAsFactors=FALSE
                         ,sep=",",head=TRUE)
 
@@ -426,7 +341,6 @@ ggplot(aes(x = row.names(electricity_df), y = Mean/10^9,  group = 1), #  all poi
 
 # Median electricty generation in the world in 1990 
 
-
 ```r
 library(ggplot2)
 
@@ -444,7 +358,6 @@ ggplot(aes(x = row.names(electricity_df), y = Median/10^9,  group = 1), #  all p
 
 # Total electricty generation in the world in 1990
 
-
 ```r
 library(ggplot2)
 
@@ -461,7 +374,6 @@ ggplot(aes(x = row.names(electricity_df), y = Total/10^9,  group = 1), #  all po
 ![](Problem_Set_4_files/figure-html/unnamed-chunk-15-1.png)
 
 # Electricty generation in the world in X in 1990 compared to the average and median
-
 
 ```r
 library(reshape2)
@@ -494,7 +406,6 @@ ggplot() +
 ![](Problem_Set_4_files/figure-html/unnamed-chunk-16-1.png)
 
 Alternatively, using summary stat:
-
 
 ```r
 library(dplyr)
@@ -549,7 +460,6 @@ ggplot() +
 ![](Problem_Set_4_files/figure-html/unnamed-chunk-17-1.png)
 
 Alternatively, overlaying Summaries with Raw Data:
-
 
 ```r
 ggplot(data=electricity_df_long, aes(x=Var1, y=value/10^9, colour=Var2, group=Var2)) + 
