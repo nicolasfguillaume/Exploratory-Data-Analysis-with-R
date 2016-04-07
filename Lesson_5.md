@@ -505,15 +505,11 @@ Notes:
 
 
 ```r
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
 nci <- read.table("nci.tsv")
 colnames(nci) <- c(1:64)
 ```
 
 ```r
-library(ggplot2)
-library(reshape2)
-
 nci.long.samp <- melt(as.matrix(nci[1:200,]))
 names(nci.long.samp) <- c("gene", "case", "value")
 head(nci.long.samp)
