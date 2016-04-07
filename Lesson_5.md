@@ -2,12 +2,9 @@ Lesson 5: Explore Many Variables
 ========================================================
 
 ### Multivariate Data
-Notes:
-
 
 ```r
 library(ggplot2)
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/Lesson 5')
 pf <- read.csv('pseudo_facebook.tsv', sep='\t')
 names(pf)
 ```
@@ -25,14 +22,7 @@ names(pf)
 
 ***
 
-### Moira Perceived Audience Size Colored by Age
-Notes:
-
-***
-
 ### Third Qualitative Variable
-Notes:
-
 
 ```r
 ggplot(aes(x = gender, y = age),
@@ -53,26 +43,8 @@ ggplot(aes(x = age, y = friend_count),
 
 And grouping by age and gender:
 
-
 ```r
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
 ```
 
 ```r
@@ -111,8 +83,7 @@ pf.fc_by_age_gender
 ## ..   ...    ...               ...                 ...   ...
 ```
 
-Identical but using the chain operator
-
+Identical but using the chain operator, as follows:
 
 ```r
 # chain function together %>%
@@ -152,7 +123,6 @@ pf.fc_by_age_gender
 ### Plotting Conditional Summaries
 Notes: plotting the median number of friend count, per gender
 
-
 ```r
 ggplot(aes(x = age, y = median_friend_count),
        data = pf.fc_by_age_gender) + 
@@ -161,29 +131,10 @@ ggplot(aes(x = age, y = median_friend_count),
 
 ![](Lesson_5_files/figure-html/Plotting Conditional Summaries-1.png)
 
-
-
-
-***
-
-### Thinking in Ratios
-Notes:
-
-***
-
-### Wide and Long Format
-Notes:
-
-***
-
 ### Reshaping Data
-Notes:
-
 
 ```r
-#install.packages('reshape2')
 library(reshape2)
-
 head(pf.fc_by_age_gender)
 ```
 
@@ -225,8 +176,6 @@ head(pf.fc_by_age_gender.wide)
 ***
 
 ### Ratio Plot
-Notes:
-
 
 ```r
 ggplot(aes(x = age, y = female/male),
@@ -251,8 +200,6 @@ pf$year_joined <- floor(2014 - pf$tenure / 365)
 ***
 
 ### Cut a Variable
-Notes:
-
 
 ```r
 summary(pf$year_joined)
@@ -350,7 +297,6 @@ with(subset(pf, tenure >= 1), summary(friend_count/tenure))
 ```
 
 What is the median friend rate? .22
-
 What is the maximum friend rate? 417
 
 ***
@@ -358,7 +304,6 @@ What is the maximum friend rate? 417
 ### Friendships Initiated
 Notes: Plot the number of friendship initiated per day vs tenure
 Subset the data so we consider only users with one day of tenure
-
 
 ```r
 ggplot(aes(x = tenure, y = friendships_initiated/tenure),
@@ -372,7 +317,6 @@ ggplot(aes(x = tenure, y = friendships_initiated/tenure),
 
 ### Bias-Variance Tradeoff Revisited
 Notes: add a smoother to the plot.
-
 
 ```r
 ggplot(aes(x = tenure, y = friendships_initiated / tenure),
@@ -425,11 +369,6 @@ ggplot(aes(x = tenure, y = friendships_initiated / tenure),
 
 ***
 
-### Sean's NFL Fan Sentiment Study
-Notes:
-
-***
-
 ### Introducing the Yogurt Data Set
 Notes:
 
@@ -437,7 +376,6 @@ Notes:
 
 ### Histograms Revisited
 Notes:
-
 
 ```r
 yo <- read.csv('yogurt.csv')
@@ -516,11 +454,6 @@ ggplot(data = yo, aes(x = time, y = price)) +
 
 ***
 
-### Sampling Observations
-Notes:
-
-***
-
 ### Looking at Samples of Households
 
 
@@ -540,38 +473,10 @@ ggplot(aes(x = time, y = price),
 
 ***
 
-### The Limits of Cross Sectional Data
-Notes:
-
-***
-
-### Many Variables
-Notes:
-
-***
-
 ### Scatterplot Matrix
-Notes:
-
 
 ```r
-#install.packages('GGally')
 library(GGally)
-```
-
-```
-## Warning: package 'GGally' was built under R version 3.2.4
-```
-
-```
-## 
-## Attaching package: 'GGally'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     nasa
 ```
 
 ```r
@@ -591,26 +496,7 @@ names(pf_subset)
 ggpairs(pf_subset[sample.int(nrow(pf_subset), 1000), ])
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](Lesson_5_files/figure-html/unnamed-chunk-6-1.png)
-
-
-
-
-***
-
-### Even More Variables
-Notes:
 
 ***
 
@@ -623,7 +509,6 @@ setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
 nci <- read.table("nci.tsv")
 colnames(nci) <- c(1:64)
 ```
-
 
 ```r
 library(ggplot2)
@@ -653,14 +538,4 @@ ggplot(aes(y = gene, x = case, fill = value),
 
 ![](Lesson_5_files/figure-html/unnamed-chunk-8-1.png)
 
-
-***
-
-### Analyzing Three of More Variables
-Reflection:
-
-***
-
-Click **KnitHTML** to see all of your hard work and to have an html
-page of this lesson, your answers, and your notes!
 
