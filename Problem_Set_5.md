@@ -226,7 +226,7 @@ electricity_df <- as.data.frame( t(electricity_df) )  # and tranpose
 electricity_df2 <- electricity_df
 ```
 
-## Electricty generation in the world in X in 1990 compared to the average and median
+### Electricty generation in the world in X in 1990 compared to the average and median
 
 ```r
 library(reshape2)
@@ -259,7 +259,7 @@ ggplot() +
 
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-12-1.png)
 
-## Alternatively, using summary stat:
+### Alternatively, using summary stat:
 
 ```r
 library(dplyr)
@@ -310,7 +310,7 @@ ggplot() +
 
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-13-1.png)
 
-## Alternatively, overlaying Summaries with Raw Data:
+### Alternatively, overlaying Summaries with Raw Data:
 
 ```r
 ggplot(data=electricity_df_long, aes(x=Var1, y=value/10^9, colour=Var2, group=Var2)) + 
