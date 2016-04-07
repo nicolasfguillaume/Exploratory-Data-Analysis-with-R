@@ -44,8 +44,7 @@ summary(diamonds)
 ***
 
 ### Create a histogram of diamond prices
-Facet the histogram by diamond color
-and use cut to color the histogram bars.
+Facet the histogram by diamond color and use cut to color the histogram bars.
 
 
 ```r
@@ -55,19 +54,12 @@ ggplot(aes(price), data = diamonds) +
   ggtitle('Diamond prices, by color and cut')
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-2-1.png)
 
 ***
 
 ### Create a scatterplot of diamond prices
-Create a scatterplot of diamond price vs.
-table and color the points by the cut of
-the diamond
-
+Create a scatterplot of diamond price vs. table and color the points by the cut of the diamond
 
 ```r
 ggplot(aes(x=table, y=price), data = diamonds) + 
@@ -86,12 +78,8 @@ ggplot(aes(x=table, y=price), data = diamonds) +
 ***
 
 ### Create a scatterplot of diamond prices
-Create a scatterplot of diamond price vs.
-volume (x * y * z) and color the points by
-the clarity of diamonds. Use scale on the y-axis
-to take the log10 of price. You should also
-omit the top 1% of diamond volumes from the plot.
-
+Create a scatterplot of diamond price vs. volume (x * y * z) and color the points by the clarity of diamonds. Use scale on the y-axis
+to take the log10 of price. You should also omit the top 1% of diamond volumes from the plot.
 
 ```r
 diamonds$volume <- diamonds$x * diamonds$y * diamonds$z
@@ -103,18 +91,12 @@ ggplot(aes(x=volume, y=price), data = diamonds) +
   ggtitle('Diamond prices as a function of volume, by clarity \n (omitting top 1% of diamond volumes)')
 ```
 
-```
-## Warning: Removed 540 rows containing missing values (geom_point).
-```
-
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-4-1.png)
 
 ***
 
-Facebook dataset (continued)
+2. Facebook dataset (continued)
 ========================================================
-
-***
 
 Loading data
 
@@ -138,9 +120,7 @@ names(pf)
 ***
 
 ### Proportion of Friendships Initiated
-Create a new variable called 'prop_initiated'
-in the Pseudo-Facebook data set. The variable should contain
-the proportion of friendships that the user initiated
+Create a new variable called 'prop_initiated' in the Pseudo-Facebook data set. The variable should contain the proportion of friendships that the user initiated
 
 
 ```r
@@ -150,9 +130,7 @@ pf$prop_initiated <- pf$friendships_initiated / pf$friend_count
 ***
 
 ### Line graph of the median proportion of friendships initiated
-Create a line graph of the median proportion of
-friendships initiated ('prop_initiated') vs.
-tenure and color the line segment by year_joined.bucket.
+Create a line graph of the median proportion of friendships initiated ('prop_initiated') vs. tenure and color the line segment by year_joined.bucket.
 
 
 ```r
@@ -167,19 +145,12 @@ ggplot(aes(x=tenure, y=prop_initiated),
   ggtitle('Median proportion of friendships initiated \n as a function of tenure, by year_joined.bucket')
 ```
 
-```
-## Warning: Removed 1962 rows containing non-finite values (stat_summary).
-```
-
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-7-1.png)
 
 ***
 
 ###  Smoothing prop_initiated vs. tenure
-Smooth the last plot you created of
-of prop_initiated vs tenure colored by
-year_joined.bucket. You can bin together ranges
-of tenure or add a smoother to the plot.
+Smooth the last plot you created of of prop_initiated vs tenure colored by year_joined.bucket. You can bin together ranges of tenure or add a smoother to the plot.
 
 
 ```r
@@ -190,13 +161,6 @@ ggplot(aes(x=tenure, y=prop_initiated),
   ggtitle('Smoothed Median proportion of friendships initiated \n as a function of tenure, by year_joined.bucket')
 ```
 
-```
-## Warning: Removed 1962 rows containing non-finite values (stat_summary).
-```
-
-```
-## Warning: Removed 1962 rows containing non-finite values (stat_smooth).
-```
 
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-8-1.png)
 
@@ -220,49 +184,18 @@ Mean is 0.6078
 
 ***
 
-Back to the Diamond dataset
+3. Back to the Diamond dataset
 ========================================================
 
-***
 
 ### Create a scatter plot of the price/carat ratio
-Create a scatter plot of the price/carat ratio
-of diamonds. The variable x should be
-assigned to cut. The points should be colored
-by diamond color, and the plot should be
-faceted by clarity.
+Create a scatter plot of the price/carat ratio of diamonds. The variable x should be assigned to cut. The points should be colored
+by diamond color, and the plot should be faceted by clarity.
 
 
 ```r
 data(diamonds)
 summary(diamonds)
-```
-
-```
-##      carat               cut        color        clarity     
-##  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :13065  
-##  1st Qu.:0.4000   Good     : 4906   E: 9797   VS2    :12258  
-##  Median :0.7000   Very Good:12082   F: 9542   SI2    : 9194  
-##  Mean   :0.7979   Premium  :13791   G:11292   VS1    : 8171  
-##  3rd Qu.:1.0400   Ideal    :21551   H: 8304   VVS2   : 5066  
-##  Max.   :5.0100                     I: 5422   VVS1   : 3655  
-##                                     J: 2808   (Other): 2531  
-##      depth           table           price             x         
-##  Min.   :43.00   Min.   :43.00   Min.   :  326   Min.   : 0.000  
-##  1st Qu.:61.00   1st Qu.:56.00   1st Qu.:  950   1st Qu.: 4.710  
-##  Median :61.80   Median :57.00   Median : 2401   Median : 5.700  
-##  Mean   :61.75   Mean   :57.46   Mean   : 3933   Mean   : 5.731  
-##  3rd Qu.:62.50   3rd Qu.:59.00   3rd Qu.: 5324   3rd Qu.: 6.540  
-##  Max.   :79.00   Max.   :95.00   Max.   :18823   Max.   :10.740  
-##                                                                  
-##        y                z         
-##  Min.   : 0.000   Min.   : 0.000  
-##  1st Qu.: 4.720   1st Qu.: 2.910  
-##  Median : 5.710   Median : 3.530  
-##  Mean   : 5.735   Mean   : 3.539  
-##  3rd Qu.: 6.540   3rd Qu.: 4.040  
-##  Max.   :58.900   Max.   :31.800  
-## 
 ```
 
 ```r
@@ -274,21 +207,16 @@ ggplot(aes(x=cut, y=price/carat), data = diamonds) +
 
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-10-1.png)
 
-***
 
-Back to the Gapminder dataset
+4. Back to the Gapminder dataset
 ========================================================
 
-***
 
-In your investigation, examine 3 or more variables and create 2-5 plots that make
-use of the techniques from Lesson 5
+In your investigation, examine 3 or more variables and create 2-5 plots that make use of the techniques from Lesson 5
 
 ### Loading data
 
 ```r
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
-
 electricity_df <- read.csv('Electricity Generation.csv', stringsAsFactors=FALSE
                         ,sep=",",head=TRUE)
 
@@ -298,11 +226,11 @@ electricity_df <- as.data.frame( t(electricity_df) )  # and tranpose
 electricity_df2 <- electricity_df
 ```
 
-# Electricty generation in the world in X in 1990 compared to the average and median
-
+## Electricty generation in the world in X in 1990 compared to the average and median
 
 ```r
 library(reshape2)
+
 electricity_df$Mean <- apply(electricity_df, 1, FUN = mean)   # add a new column 'Mean'
 electricity_df_long <- as.data.frame(melt(as.matrix(electricity_df2)))  # to be able to plot multiple column, first convert the df from wide format to long format (here with melt, same as Tidyr's Gather function). Note: melt as a matrix first in order to be able to use the rownames as a variable.
 
@@ -331,31 +259,11 @@ ggplot() +
 
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-12-1.png)
 
-Alternatively, using summary stat:
-
+## Alternatively, using summary stat:
 
 ```r
 library(dplyr)
-```
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 year_groups <- group_by(electricity_df_long, Var1)     # first groups data by year
 data_by_year <- summarise(year_groups,
           generation_mean = mean(value) 
@@ -402,8 +310,7 @@ ggplot() +
 
 ![](Problem_Set_5_files/figure-html/unnamed-chunk-13-1.png)
 
-Alternatively, overlaying Summaries with Raw Data:
-
+## Alternatively, overlaying Summaries with Raw Data:
 
 ```r
 ggplot(data=electricity_df_long, aes(x=Var1, y=value/10^9, colour=Var2, group=Var2)) + 
