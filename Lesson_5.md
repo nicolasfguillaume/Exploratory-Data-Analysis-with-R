@@ -1,4 +1,4 @@
-Lesson 5
+Lesson 5: Explore Many Variables
 ========================================================
 
 ### Multivariate Data
