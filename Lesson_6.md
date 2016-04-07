@@ -1,10 +1,6 @@
 Lesson 6: Diamonds and Price Predictions
 ========================================================
 
-### Welcome
-Notes:
-
-***
 
 ### Scatterplot Review
 
@@ -15,33 +11,6 @@ data(diamonds)
 summary(diamonds)
 ```
 
-```
-##      carat               cut        color        clarity     
-##  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :13065  
-##  1st Qu.:0.4000   Good     : 4906   E: 9797   VS2    :12258  
-##  Median :0.7000   Very Good:12082   F: 9542   SI2    : 9194  
-##  Mean   :0.7979   Premium  :13791   G:11292   VS1    : 8171  
-##  3rd Qu.:1.0400   Ideal    :21551   H: 8304   VVS2   : 5066  
-##  Max.   :5.0100                     I: 5422   VVS1   : 3655  
-##                                     J: 2808   (Other): 2531  
-##      depth           table           price             x         
-##  Min.   :43.00   Min.   :43.00   Min.   :  326   Min.   : 0.000  
-##  1st Qu.:61.00   1st Qu.:56.00   1st Qu.:  950   1st Qu.: 4.710  
-##  Median :61.80   Median :57.00   Median : 2401   Median : 5.700  
-##  Mean   :61.75   Mean   :57.46   Mean   : 3933   Mean   : 5.731  
-##  3rd Qu.:62.50   3rd Qu.:59.00   3rd Qu.: 5324   3rd Qu.: 6.540  
-##  Max.   :79.00   Max.   :95.00   Max.   :18823   Max.   :10.740  
-##                                                                  
-##        y                z         
-##  Min.   : 0.000   Min.   : 0.000  
-##  1st Qu.: 4.720   1st Qu.: 2.910  
-##  Median : 5.710   Median : 3.530  
-##  Mean   : 5.735   Mean   : 3.539  
-##  3rd Qu.: 6.540   3rd Qu.: 4.040  
-##  Max.   :58.900   Max.   :31.800  
-## 
-```
-
 ```r
 ggplot(aes(x=carat, y=price), data = diamonds) + 
   geom_point(fill=I('#F79420'), color=I('black'), shape=21) +
@@ -49,35 +18,12 @@ ggplot(aes(x=carat, y=price), data = diamonds) +
   ylim(0, quantile(diamonds$price, probs = 0.99))
 ```
 
-```
-## Warning: Removed 926 rows containing missing values (geom_point).
-```
 
 ![](Lesson_6_files/figure-html/Scatterplot Review-1.png)
 
 ***
 
-### Price and Carat Relationship
-Response:
-
-***
-
-### Frances Gerety
-Notes:
-
-#### A diamonds is
-
-
-***
-
-### The Rise of Diamonds
-Notes:
-
-***
-
 ### ggpairs Function
-Notes:
-
 
 ```r
 # install these if necessary
@@ -89,58 +35,12 @@ Notes:
 #install.packages('car')
 #install.packages('reshape2')
 #install.packages('dplyr')
-
-# load the ggplot graphics package and the others
-library(ggplot2)
-library(GGally)
-```
-
-```
-## Warning: package 'GGally' was built under R version 3.2.4
 ```
 
 ```r
+library(GGally)
 library(scales)
 library(memisc)
-```
-
-```
-## Warning: package 'memisc' was built under R version 3.2.4
-```
-
-```
-## Loading required package: lattice
-```
-
-```
-## Loading required package: MASS
-```
-
-```
-## Warning: package 'MASS' was built under R version 3.2.4
-```
-
-```
-## 
-## Attaching package: 'memisc'
-```
-
-```
-## The following object is masked from 'package:scales':
-## 
-##     percent
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     contr.sum, contr.treatment, contrasts
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     as.array
 ```
 
 ```r
@@ -153,43 +53,13 @@ ggpairs(diamond_samp,
         upper = list(combo = wrap("box", outlier.shape = I('.'))))
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
 
 ![](Lesson_6_files/figure-html/ggpairs Function-1.png)
 
-What are some things you notice in the ggpairs output?
-Response:
 
 ***
 
 ### The Demand of Diamonds
-Notes:
-
 
 ```r
 library(gridExtra)
@@ -220,10 +90,7 @@ Notes: Peak of demand for diamonds which costs about $800 (poor buyer) and $4,50
 ***
 
 ### Scatterplot Transformation
-Create two histograms of the price variable and place them side by side on one output image.
-The first plot should be a histogram of price and the second plot should transform
-the price variable using log10.
-
+Create two histograms of the price variable and place them side by side on one output image. The first plot should be a histogram of price and the second plot should transform the price variable using log10.
 
 ```r
 ggplot(aes(x=carat,y=price), data = diamonds) + 
@@ -259,10 +126,6 @@ ggplot(aes(carat, price), data = diamonds) +
   ggtitle('Price (log10) by Cube-Root of Carat')
 ```
 
-```
-## Warning: Removed 1683 rows containing missing values (geom_point).
-```
-
 ![](Lesson_6_files/figure-html/Use cuberoot_trans-1.png)
 
 ***
@@ -290,8 +153,6 @@ head(  sort( table(diamonds$price), decreasing = T )  ) # first line is the pric
 ## 132 127 126 125 124 121
 ```
 
-
-
 ```r
 ggplot(aes(carat, price), data = diamonds) + 
   geom_point(alpha = 1/2, size = 1, position = 'jitter') + 
@@ -302,10 +163,6 @@ ggplot(aes(carat, price), data = diamonds) +
   ggtitle('Price (log10) by Cube-Root of Carat')
 ```
 
-```
-## Warning: Removed 1691 rows containing missing values (geom_point).
-```
-
 ![](Lesson_6_files/figure-html/Overplotting Revisited-1.png)
 
 Notes: This gives a better sense of how dense or sparse the data is at key places.
@@ -313,16 +170,9 @@ Notes: This gives a better sense of how dense or sparse the data is at key place
 
 ***
 
-### Other Qualitative Factors
-Notes:
-
-***
-
 ### Price vs. Carat and Clarity
 
 ColorBrewer provides sequential, diverging and qualitative colour schemes which are particularly suited and tested to display discrete values (levels of a factor) on a map. ggplot2 can use those colours in discrete scales. It also allows to smoothly interpolate 6 colours from any palette to a continuous scale
-
-Alter the code below.
 
 ```r
 # install and load the RColorBrewer package
@@ -341,10 +191,6 @@ ggplot(aes(x = carat, y = price,  color=clarity), data = diamonds) +
   ggtitle('Price (log10) by Cube-Root of Carat and Clarity')
 ```
 
-```
-## Warning: Removed 1693 rows containing missing values (geom_point).
-```
-
 ![](Lesson_6_files/figure-html/Price vs. Carat and Clarity-1.png)
 
 ***
@@ -355,8 +201,6 @@ Response: Per the color pattern on the plot, Clarity seems to accounts for some 
 ***
 
 ### Price vs. Carat and Cut
-
-Alter the code below.
 
 ```r
 ggplot(aes(x = carat, y = price, color = cut), data = diamonds) + 
@@ -371,9 +215,6 @@ ggplot(aes(x = carat, y = price, color = cut), data = diamonds) +
   ggtitle('Price (log10) by Cube-Root of Carat and Cut')
 ```
 
-```
-## Warning: Removed 1696 rows containing missing values (geom_point).
-```
 
 ![](Lesson_6_files/figure-html/Price vs. Carat and Cut-1.png)
 
@@ -386,7 +227,6 @@ Response: Most of the diamonds have an "ideal" cut. Cut seems to have a limited 
 
 ### Price vs. Carat and Color
 
-Alter the code below.
 
 ```r
 ggplot(aes(x = carat, y = price, color = color), data = diamonds) + 
@@ -401,9 +241,6 @@ ggplot(aes(x = carat, y = price, color = color), data = diamonds) +
   ggtitle('Price (log10) by Cube-Root of Carat and Color')
 ```
 
-```
-## Warning: Removed 1688 rows containing missing values (geom_point).
-```
 
 ![](Lesson_6_files/figure-html/Price vs. Carat and Color-1.png)
 
@@ -420,8 +257,6 @@ Price is the outcome and carat is the predictor variable. We used our domain kno
 - long tailed price distribution
 - assumption that flawless diamonds should become exponentially rare as diamond volume increases
 
-Response:
-
 ***
 
 ### Building the Linear Model
@@ -429,8 +264,6 @@ Notes: Create 5 models using the lm() function:
 - The response on the left of the tilde ~ (read "is modeled as")
 - A list of predictors on the right of the tilde ~ (separated by '+')
 See http://data.princeton.edu/R/linearModels.html for more info.
-
-
 
 ```r
 library(scales)
@@ -518,11 +351,6 @@ in the price of diamonds. This fits with our exploration earlier.
 ***
 
 ### Model Problems
-Video Notes:
-
-Research:
-(Take some time to come up with 2-4 problems for the model)
-(You should 10-20 min on this)
 
 Response: data from 2008 to 2014: 
 - adjustment by inflation (but not only)
@@ -533,8 +361,6 @@ Response: data from 2008 to 2014:
 ***
 
 ### A Bigger, Better Data Set
-Notes:
-
 
 ```r
 #install.package('bitops')
@@ -542,20 +368,12 @@ Notes:
 library('bitops')
 library('RCurl')
 
-#diamondsurl = getBinaryURL("https://raw.github.com/solomonm/diamonds-data/master/BigDiamonds.Rda")
-#load(rawConnection(diamondsurl))
-
-# OR if it doesn't work try this:
-setwd('C:/Users/Nicolas/Desktop/Projets Tech/Data Analysis with R/')
 load("BigDiamonds.rda")
 ```
 
-The code used to obtain the data is available here:
-https://github.com/solomonm/diamonds-data
+The code used to obtain the data is available here: https://github.com/solomonm/diamonds-data
 
 ## Building a Model Using the Big Diamonds Data Set
-Notes:
-
 
 ```r
 library(scales)
@@ -679,14 +497,4 @@ Results:
 - Ground truth: price = $5,601
 - Prediction: price = $5,040  (within the 95% CI)
 - Error = -$560 or -9.9%
-
-***
-
-## Final Thoughts
-Notes:
-
-***
-
-Click **KnitHTML** to see all of your hard work and to have an html
-page of this lesson, your answers, and your notes!
 
