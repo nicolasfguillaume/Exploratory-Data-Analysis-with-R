@@ -164,11 +164,11 @@ library(dplyr)                  # allows to split up a dataframe and apply funct
 
 # alternatively, it is possible to chain the commands:
 pf.fc_by_age <- pf %>%
-  group_by(age) %>%
-  summarise(friend_count_mean = mean(friend_count),     # and creates 3 new variables
-          friend_count_median = median(friend_count),
-          n = n() ) %>%
-  arrange(age) 
+                group_by(age) %>%
+                summarise(friend_count_mean = mean(friend_count),     # and creates 3 new variables
+                          friend_count_median = median(friend_count),
+                          n = n() ) %>%
+                arrange(age) 
 
 pf.fc_by_age
 ```
